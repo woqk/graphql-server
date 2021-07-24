@@ -5,24 +5,45 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "dev": "cross-env NODE_DEV=true ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "migration:create": "npx mikro-orm migration:create",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "woqk",
   "license": "ISC",
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/orm.config.ts",
+      "./dist/orm.config.js"
+    ]
+  },
   "dependencies": {
     "@envelop/core": "^1.0.0",
     "@envelop/depth-limit": "^1.0.0",
     "@envelop/generic-auth": "^1.0.0",
     "@envelop/rate-limiter": "^1.0.0",
-    "@graphql-tools/schema": "^7.1.5",
+    "@mikro-orm/cli": "^4.5.7",
+    "@mikro-orm/core": "^4.5.7",
+    "@mikro-orm/migrations": "^4.5.7",
+    "@mikro-orm/postgresql": "^4.5.7",
+    "class-validator": "^0.13.1",
+    "cross-env": "^7.0.3",
     "fastify": "^3.19.2",
     "graphql": "^15.5.1",
+    "graphql-fields-to-relations": "^1.0.4",
     "graphql-helix": "^1.6.1",
-    "graphql-middleware": "^6.0.10"
+    "graphql-middleware": "^6.0.10",
+    "graphql-subscriptions": "^1.2.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^16.4.0",
     "ts-node": "^10.1.0",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.10.1",
+    "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   }
 }
